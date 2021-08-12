@@ -12,7 +12,13 @@ const routes = [
   },
   {
     path: '/hello',
-    component: HelloWorld
+    component: HelloWorld,
+    children: [
+      {
+        path: '/hello/info',
+        component: { render(h) { return h('div', 'info page') } }
+      }
+    ]
   }
 ]
 

@@ -7,19 +7,40 @@ class KVueRouter {
     constructor(options) {
         this.$options = options
         this.routeMap = {}
-        options.routes.forEach(route => {
-            this.handleRoute(route)
-        })
-        Vue.util.defineReactive(this, 'current')
+        // options.routes.forEach(route => {
+        //     this.handleRoute(route)
+        // })
+        // Vue.util.defineReactive(this, 'current')
+        this.current = window.location.hash.slice(1) || '/'
+        Vue.util.defineReactive(this, 'matched', [])
+        this.match()
         window.addEventListener('hashchange', this.onHashChange.bind(this))
         window.addEventListener('load', this.onHashChange.bind(this))
     }
     onHashChange() {
         this.current = window.location.hash.slice(1)
+        this.matched = []
+        this.match()
     }
     handleRoute(route) {
         let { path, component } = route
         this.routeMap[path] = component
+    }
+    match(routes) {
+        routes = routes || this.$options.routes
+        for ( const route of routes ) {
+            if (route.path === '/' && this.current === '/') {
+                this.matched.push(route)
+                return
+            }
+
+            if (route.path !== '/' && this.current.includes(route.path)) {
+                this.matched.push(route)
+                if (route.children) {
+                    this.match(route.children)
+                }
+            }
+        }
     }
 }
 

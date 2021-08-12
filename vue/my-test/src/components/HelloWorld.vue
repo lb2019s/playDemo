@@ -2,6 +2,10 @@
   <div class="hello">
     <h1>{{ msg }}</h1>
     <h3 :class="$style.h3">Ecosystem</h3>
+    <p @click="$store.commit('add')">{{$store.state.count}}</p>
+    <p @click="$store.dispatch('add')">{{$store.state.count}}</p>
+    <p>{{$store.getters.dubboCount}}</p>
+    <router-view></router-view>
   </div>
 </template>
 
