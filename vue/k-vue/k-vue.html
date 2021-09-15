@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h3>{{count}}</h5>
+        <p k-text="count"></p>
+        <div k-html="desc"></div>
+        <input type="text" k-model="desc">
+        <input type="button" value="添加" @click="handleClick" />
+    </div>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
+    <script src="./compile.js"></script>
+    <script src="./k-vue.js"></script>
+    <script>
+        let app = new KVue({
+            el: "#app",
+            data: {
+                count: 1,
+                desc: '<span style="color: #f988cc">有的玩？</span>',
+                list: [1, 3, 5]
+            },
+            methods: {
+                handleClick() {
+                    this.list.push(10);
+                    this.count++
+                }
+            },
+        })
+        // setInterval(() => {
+        //     app.count++
+        // }, 1000);
+    </script>
+</body>
+</html>
