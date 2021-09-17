@@ -24,5 +24,5 @@ server.get('*', (req, res) => {
 })
 
 server.listen(3030, () => {
-    console.log('server running https://localhost:3030')
+    console.log('server running https://127.0.0.1:3030')
 })
