@@ -10,6 +10,9 @@
 import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
+  asyncData({ store, route }) {
+    return store.dispatch('getCount', route)
+  },
   name: 'Home',
   components: {
     HelloWorld

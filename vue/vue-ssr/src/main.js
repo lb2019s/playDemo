@@ -1,14 +1,34 @@
 import Vue from 'vue'
 import App from './App.vue'
 import { createRouter } from './router'
+import { createStore } from './store'
+import { sync } from 'vuex-router-sync'
 
 Vue.config.productionTip = false
 
+Vue.mixin({
+  beforeMount() {
+    const { asyncData } = this.$options
+    if (asyncData) {
+      // 将获取数据操作分配给 promise
+      // 以便在组件中，我们可以在数据准备就绪后
+      // 通过运行 `this.dataPromise.then(...)` 来执行其他任务
+      this.dataPromise = asyncData({
+        store: this.$store,
+        route: this.$route
+      })
+    }
+  }
+})
+
 export function createApp() {
   const router = createRouter()
+  const store = createStore()
+  sync(store, router)
   const app = new Vue({
     router,
+    store,
     render: h => h(App)
   })
-  return { app, router }
+  return { app, router, store }
 }

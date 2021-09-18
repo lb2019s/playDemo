@@ -21,16 +21,17 @@ const renderer = createBundleRenderer(bundle, {
 })
 
 server.get('*', (req, res) => {
-    const context = { url: req.url }
+    const context = {
+        title: 'vue ssr',
+        url: req.url
+    }
 
-    renderer.renderToString(context, (err, html) => {
-        if (err) {
-            console.error(err)
-            res.status = 500
-            res.send('Internal Server Error');
-            return
-        }
+    renderer.renderToString(context).then(html => {
         res.send(html)
+    }).catch(err => {
+        console.error(err)
+        res.status = 500
+        res.send('Internal Server Error');
     })
 })
 
