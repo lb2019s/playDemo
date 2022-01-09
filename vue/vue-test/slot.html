@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.5.22"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <slot-box>
+            哈哈娃
+            <template v-slot:header>
+                tou
+            </template>
+            <template v-slot:default>
+                <h4>哈瓦哈</h4>
+            </template>
+            
+            <template #footer="{ user }">
+                di {{ user }}
+            </template>
+        </slot-box>
+        <!-- <slot-box>
+            哈哈娃
+            <template slot="header">
+                tou
+            </template>
+            哈瓦哈
+            <h1 slot="footer" slot-scope="{ user }">
+                di {{ user }}
+            </h1>
+        </slot-box> -->
+    </div>
+    <script>
+        Vue.component('SlotBox', {
+            template: `<div>
+                    <slot name="header"></slot>
+                    <slot>娃哈哈</slot>
+                    <slot name="footer" :user="'喜洋洋'"></slot>
+                </div>`,
+            mounted() {
+                console.log('$slots', this.$slots)
+                console.log('$scopedSlots', this.$scopedSlots)
+            },
+        })
+        new Vue({
+            el: '#app'
+        })
+    </script>
+</body>
+</html>

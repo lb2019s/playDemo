@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">哇哈哈哈或</div>
+    <template id="temp">
+        <h3>一样一样</h3>
+    </template>
+    <script>
+        if ('content' in document.createElement('template')) {
+            let tmep = document.getElementById('temp')
+            let box = document.querySelector('#box')
+            // let h3 = content.getElementsByTagName('h3')
+            // console.log(content.innerHTML)
+            box.appendChild(document.importNode(temp.content, true))
+        }
+    </script>
+</body>
+</html>
