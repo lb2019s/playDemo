@@ -1,0 +1,19 @@
+<!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    (async () => {
+        // axios.defaults.baseURL = 'http://localhost:4000'
+        // axios.defaults.withCredentials = true
+        const res = await axios.get("/api/users", {
+            headers: {
+                'X-token': 'www'
+            }
+        })
+        console.log('data',res.data)
+        document.writeln(`Response : ${JSON.stringify(res.data)}`)
+    })()
+</script> -->
+
+<form method="post" action="http://localhost:4000/api/save">
+    <input type="text" name="name" value="tom">
+    <input type="submit" value="save">
+</form>
