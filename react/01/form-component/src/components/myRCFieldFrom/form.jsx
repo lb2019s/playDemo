@@ -1,7 +1,9 @@
+import { useImperativeHandle } from "react"
 import FieldContext from "./filedContext"
 import useForm from './useForm'
-const Form = ({ children, form, onFinish, onFinishFailed }) => {
+const Form = ({ children, form, onFinish, onFinishFailed }, ref) => {
     const [formStore] = useForm(form)
+    useImperativeHandle(ref, () => formStore)
     formStore.setCallback({
         onFinish,
         onFinishFailed
