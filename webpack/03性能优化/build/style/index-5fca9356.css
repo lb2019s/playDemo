@@ -1,0 +1,8 @@
+body {
+    background-color: rgb(160, 64, 147);
+}
+
+div:nth-of-type(odd) {
+    background-color: rgb(64, 175, 64);
+}
+@font-face{font-display:swap;font-family:webfont;src:url(iconfont/webfont.eot);src:url(iconfont/webfont.eot?#iefix) format("embedded-opentype"),url(iconfont/webfont.woff2) format("woff2"),url(iconfont/webfont.woff) format("woff"),url(iconfont/webfont.ttf) format("truetype"),url(iconfont/webfont.svg#webfont) format("svg")}html body{border:10px solid gold;display:-webkit-box;display:-ms-flexbox;display:flex;height:200px}html body div{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-family:webfont!important;font-size:16px;font-style:normal}

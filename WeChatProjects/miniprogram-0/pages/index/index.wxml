@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view class="container">
+第一页
+</view>
+<button type="primary" bindtap="toPage2">第二页</button>
