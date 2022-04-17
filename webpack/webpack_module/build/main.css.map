@@ -1,0 +1,1 @@
+{"version":3,"file":"main.css","mappings":";;;AAAA;AACA;AACA","sources":["webpack://webpack_module/./src/style.css"],"sourcesContent":["#root {\r\n    color: aqua;\r\n}"],"names":[],"sourceRoot":""}
