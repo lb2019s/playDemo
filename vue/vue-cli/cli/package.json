@@ -1,0 +1,11 @@
+{
+  "name": "cli",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "bin": "./bin/index.js",
+  "devDependencies": {
+    "minimist": "^1.2.6",
+    "webpack": "^5.72.0"
+  }
+}

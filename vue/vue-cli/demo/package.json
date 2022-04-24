@@ -1,0 +1,13 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "cli",
+    "clean": "cli clean"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

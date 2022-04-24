@@ -110,10 +110,10 @@ class MyPromise {
             } catch (error) {
                 reject(error)
             }
-            if (this.isFunction(x)) {
+            if (this.isFunction(then)) {
                 let called = false
                 try {
-                    them.call(
+                    then.call(
                         x,
                         y => {
                             if (called) {

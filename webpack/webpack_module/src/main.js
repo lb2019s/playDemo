@@ -7,7 +7,7 @@ const Async = loadComponent(() => import('./Async'))
 const App = () => {
     return (
         <div>
-            哇哈哈--00
+            哇哈哈--00-
             {/* <Suspense>
                 <Async />
             </Suspense> */}
