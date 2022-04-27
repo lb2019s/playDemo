@@ -3,12 +3,12 @@ function sort(arr) {
     return arr
 }
 
+const aux = []
 function mergeSort(array, left, right) {
     if (left === right) return
     const mid = left + ((right - left) >> 1)
     mergeSort(array, left, mid)
     mergeSort(array, mid + 1, right)
-    const aux = []
     for (let i = left; i <= right; i++) {
         aux[i] = array[i]
     }
