@@ -72,3 +72,18 @@ const obj1 = shallowCopy(obj)
 const obj2 = deepClone(obj)
 console.log(obj1)
 console.log(obj2)
+
+// 利用messageChannel
+function deepCopy(obj) {
+    return new Promise((resolve) => {
+        const { port1, port2 } = new MessageChannel();
+        port2.onmessage = ev => resolve(ev.data);
+        port1.postMessage(obj);
+    });
+}
+
+deepCopy(obj).then((copy) => {           // 请记住`MessageChannel`是异步的这个前提！
+    let copyObj = copy;
+    console.log(copyObj, obj)
+    console.log(copyObj == obj)
+});
