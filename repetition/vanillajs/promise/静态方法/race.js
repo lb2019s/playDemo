@@ -9,3 +9,14 @@ Promise.race = function (promises) {
         })
     })
 }
+
+Promise.race = function (promises) {
+    return new Promise((resolve, reject) => {
+        if (!Array.isArray(promises)) {
+            return reject(new TypeError(' '))
+        }
+        Promise.forEach(item => {
+            Promise.resolve(item).then(resolve).catch(reject)
+        })
+    })
+}

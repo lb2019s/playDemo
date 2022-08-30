@@ -17,6 +17,25 @@ Promise.all = function (promises) {
     })
 }
 
+Promise.all = function (promises) {
+    return new Promise((resolve, reject) => {
+        if (!Array.isArray(promises)) {
+            return reject(new TypeError(' '))
+        }
+        let count = 0
+        let result = new Array(promises.length)
+        promises.forEach((item, index) => {
+            Promise.resolve(item).then(value => {
+                result[index] = value
+                count++
+                if (count === promises.length) {
+                    resolve(result)
+                }
+            }).catch(reject)
+        })
+    })
+}
+
 const p1 = new Promise((resolve, reject) => {
     resolve('hello');
 })

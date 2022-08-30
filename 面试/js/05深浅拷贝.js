@@ -28,7 +28,7 @@ function deepClone(target, map = new Map()) {
     }
 
     const constructor = target.constructor
-    if (/^(RegExp|Date)$/) {
+    if (/^(RegExp|Date)$/i.test(constructor.name)) {
         return new constructor(target)
     }
 

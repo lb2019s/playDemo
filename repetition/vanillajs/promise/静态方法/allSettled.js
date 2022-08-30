@@ -28,6 +28,36 @@ Promise.allSettled = function (promises) {
     })
 }
 
+Promise.allSettled = function (promises) {
+    return new Promise((resolve, reject) => {
+        if (!Array.isArray(promises)) {
+            return reject(new TypeError(' '))
+        }
+        let count = 0
+        let result = []
+        promises.forEach((item, index) => {
+            Promise.resolve(item).then(
+                value => {
+                    result[index] = {
+                        status: 'fulfilled',
+                        value
+                    }
+                }
+            ).catch(reason => {
+                result[index] = {
+                    status: 'rejected',
+                    reason
+                }
+            }).finally(() => {
+                count++
+                if (count === promises.length) {
+                    resolve(result)
+                }
+            })
+        })
+    })
+}
+
 const resolved = Promise.resolve(42);
 const rejected = Promise.reject(-1);
 
